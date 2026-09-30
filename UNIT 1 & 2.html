@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebCraft | WWW & HTML Masterclass</title>
+
+    <style>
+        /* ==============================
+           PREMIUM COLOR SYSTEM
+        ============================== */
+        :root {
+            --bg: #070b14;
+            --bg2: #0d1322;
+            --card: rgba(18, 25, 42, 0.78);
+            --text: #f5f7ff;
+            --muted: #9da8bd;
+            --cyan: #43e7ff;
+            --lime: #b8ff4d;
+            --pink: #ff5caa;
+            --border: rgba(255,255,255,0.10);
+            --shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(67,231,255,0.10), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(255,92,170,0.08), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            background: rgba(7,11,20,0.82);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 950px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 15px;
+            border: 1px solid rgba(67,231,255,0.3);
+            border-radius: 30px;
+            color: var(--cyan);
+            background: rgba(67,231,255,0.06);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                var(--cyan),
+                var(--lime),
+                var(--pink)
+            );
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 23px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: #061018;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: white;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ==============================
+           COMMON
+        ============================== */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        /* ==============================
+           SEARCH
+        ============================== */
+
+        .search-box {
+            margin-bottom: 35px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 17px 20px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #search:focus {
+            border-color: var(--cyan);
+        }
+
+        /* ==============================
+           UNIT CARDS
+        ============================== */
+
+        .unit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .unit-number {
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .topic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+            transition: 0.35s;
+            box-shadow: var(--shadow);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(67,231,255,0.4);
+        }
+
+        .topic-number {
+            color: var(--pink);
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .topic-card h3 {
+            margin: 8px 0;
+        }
+
+        .topic-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ==============================
+           FLOW
+        ============================== */
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .flow-item {
+            padding: 25px 10px;
+            text-align: center;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .flow-item strong {
+            display: block;
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           CODE LAB
+        ============================== */
+
+        .lab {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .code-box,
+        .preview-box {
+            background: #050811;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .box-title {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            color: #d9e4ff;
+            font-size: 14px;
+        }
+
+        .preview-content {
+            padding: 30px;
+            background: white;
+            color: #111;
+            min-height: 300px;
+        }
+
+        .preview-content h1 {
+            color: #111;
+        }
+
+        /* ==============================
+           QUIZ
+        ============================== */
+
+        .quiz {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .question {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+        }
+
+        .question h3 {
+            margin-bottom: 15px;
+        }
+
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 7px 0;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.04);
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: rgba(67,231,255,0.08);
+        }
+
+        .quiz button {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 12px;
+            background: var(--cyan);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+        }
+
+        footer span {
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            .topic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lab {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ==============================
+     NAVIGATION
+================================ -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            Web<span>Craft</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#unit1">Unit 01</a></li>
+            <li><a href="#unit2">Unit 02</a></li>
+            <li><a href="#lab">Lab</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- ==============================
+     HERO
+================================ -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ITM • B.Tech CSE • Web Technology
+        </div>
+
+        <h1>
+            Master the
+            <span class="gradient">Web.</span>
+        </h1>
+
+        <p>
+            A premium learning portal covering
+            World Wide Web, Internet fundamentals,
+            HTTP, browsers, servers and HTML.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#unit1" class="btn btn-primary">
+                Start Learning
+            </a>
+
+            <a href="#quiz" class="btn btn-secondary">
+                Take Quiz
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     SEARCH
+================================ -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Explore the Syllabus
+    </h2>
+
+    <p class="section-subtitle">
+        Search topics from Unit 01 and Unit 02.
+    </p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search: HTML, HTTP, URL, WWW..."
+        >
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     UNIT 1
+================================ -->
+
+<section class="section" id="unit1">
+
+    <div class="unit-header">
+        <div>
+            <div class="unit-number">UNIT 01</div>
+
+            <h2 class="section-title">
+                Introduction to WWW
+            </h2>
+
+            <p class="section-subtitle">
+                Understand the architecture and working of the World Wide Web.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="topic-grid">
+
+        <article class="topic-card">
+            <span class="topic-number">01</span>
+            <h3>World Wide Web</h3>
+            <p>
+                Introduction to WWW, its concept and basic architecture.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">02</span>
+            <h3>WWW History</h3>
+            <p>
+                Learn about the evolution and development of the World Wide Web.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">03</span>
+            <h3>Internet vs WWW</h3>
+            <p>
+                Understand the difference between the Internet and the Web.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">04</span>
+            <h3>HTTP</h3>
+            <p>
+                Learn how HTTP request and response communication works.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">05</span>
+            <h3>DNS & Request Lifecycle</h3>
+            <p>
+                Understand how domain names are resolved before a web request.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">06</span>
+            <h3>URI vs URL</h3>
+            <p>
+                Understand identifiers and the structure of web addresses.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">07</span>
+            <h3>Domain Names & TLDs</h3>
+            <p>
+                Learn domains and top-level domains used on the Web.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">08</span>
+            <h3>Browsers & Web Servers</h3>
+            <p>
+                Understand how browsers communicate with web servers.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">09</span>
+            <h3>IPv4 & IPv6</h3>
+            <p>
+                Learn the two major versions of Internet Protocol addresses.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">10</span>
+            <h3>Web 2.0</h3>
+            <p>
+                Explore AJAX, REST and the evolution toward interactive websites.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">11</span>
+            <h3>Dynamic IP & DDNS</h3>
+            <p>
+                Learn dynamic addressing and Dynamic DNS concepts.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">12</span>
+            <h3>IP Address Types</h3>
+            <p>
+                Understand different categories of IP addresses.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">13</span>
+            <h3>Web Design Standards</h3>
+            <p>
+                Learn responsive design, accessibility and visual hierarchy.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">14</span>
+            <h3>Linux Web Server</h3>
+            <p>
+                Introduction to web server setup using Linux, Apache and Nginx.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     HTTP FLOW
+================================ -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        How the Web Works
+    </h2>
+
+    <p class="section-subtitle">
+        A simplified view of the browser-to-server request lifecycle.
+    </p>
+
+    <div class="flow">
+
+        <div class="flow-item">
+            <strong>01</strong>
+            Browser
+        </div>
+
+        <div class="flow-item">
+            <strong>02</strong>
+            DNS
+        </div>
+
+        <div class="flow-item">
+            <strong>03</strong>
+            HTTP Request
+        </div>
+
+        <div class="flow-item">
+            <strong>04</strong>
+            Web Server
+        </div>
+
+        <div class="flow-item">
+            <strong>05</strong>
+            HTTP Response
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     UNIT 2
+================================ -->
+
+<section class="section" id="unit2">
+
+    <div class="unit-header">
+
+        <div>
+            <div class="unit-number">UNIT 02</div>
+
+            <h2 class="section-title">
+                HTML
+            </h2>
+
+            <p class="section-subtitle">
+                Learn HTML from basic structure to modern semantic HTML.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="topic-grid">
+
+        <article class="topic-card">
+            <span class="topic-number">01</span>
+            <h3>What is HTML?</h3>
+            <p>
+                Understand HTML and its role in creating web pages.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">02</span>
+            <h3>Basic HTML Document</h3>
+            <p>
+                Learn the basic structure of an HTML document.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">03</span>
+            <h3>Elements & Nesting</h3>
+            <p>
+                Learn HTML elements, tags and proper nesting.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">04</span>
+            <h3>DOCTYPE & Structure</h3>
+            <p>
+                Understand DOCTYPE, html, head and body elements.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">05</span>
+            <h3>Headings & Paragraphs</h3>
+            <p>
+                Learn headings from H1 to H6 and paragraph elements.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">06</span>
+            <h3>Links & Attributes</h3>
+            <p>
+                Learn hyperlinks and HTML attributes.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">07</span>
+            <h3>Images</h3>
+            <p>
+                Learn how images are added to HTML documents.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">08</span>
+            <h3>Source & Inspect</h3>
+            <p>
+                Understand browser tools used to inspect HTML.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">09</span>
+            <h3>Coding Standards</h3>
+            <p>
+                Learn clean and consistent HTML coding practices.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">10</span>
+            <h3>Text Formatting</h3>
+            <p>
+                Learn common HTML formatting elements.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">11</span>
+            <h3>Whitespace, HR & BR</h3>
+            <p>
+                Understand display, whitespace and line-breaking elements.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">12</span>
+            <h3>PRE Element</h3>
+            <p>
+                Learn how preformatted text can be represented.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">13</span>
+            <h3>Lists</h3>
+            <p>
+                Learn ordered and unordered HTML lists.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">14</span>
+            <h3>Tables</h3>
+            <p>
+                Learn how to create structured tables in HTML.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">15</span>
+            <h3>Forms & Input</h3>
+            <p>
+                Learn forms and common input controls.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">16</span>
+            <h3>HTML5 Media & APIs</h3>
+            <p>
+                Introduction to HTML5 media and APIs.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">17</span>
+            <h3>Drag & Drop</h3>
+            <p>
+                Understand the HTML drag-and-drop concept.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">18</span>
+            <h3>XHTML & Meta Tags</h3>
+            <p>
+                Learn XHTML concepts and important meta information.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">19</span>
+            <h3>Semantic HTML</h3>
+            <p>
+                Understand meaningful semantic HTML elements.
+            </p>
+        </article>
+
+        <article class="topic-card">
+            <span class="topic-number">20</span>
+            <h3>HTML5 Fundamentals</h3>
+            <p>
+                Review the major HTML5 fundamentals covered in the unit.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     HTML LAB
+================================ -->
+
+<section class="section" id="lab">
+
+    <h2 class="section-title">
+        Beginner HTML Lab
+    </h2>
+
+    <p class="section-subtitle">
+        Write HTML and see what the basic document structure looks like.
+    </p>
+
+    <div class="lab">
+
+        <div class="code-box">
+
+            <div class="box-title">
+                HTML CODE
+            </div>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Welcome to Web Technology&lt;/h1&gt;
+
+    &lt;p&gt;
+        I am learning HTML.
+    &lt;/p&gt;
+
+    &lt;a href="https://example.com"&gt;
+        Visit Website
+    &lt;/a&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+        </div>
+
+
+        <div class="preview-box">
+
+            <div class="box-title">
+                BROWSER PREVIEW
+            </div>
+
+            <div class="preview-content">
+
+                <h1>
+                    Welcome to Web Technology
+                </h1>
+
+                <p>
+                    I am learning HTML.
+                </p>
+
+                <a href="#">
+                    Visit Website
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     QUIZ
+================================ -->
+
+<section class="section" id="quiz">
+
+    <h2 class="section-title">
+        Test Your Knowledge
+    </h2>
+
+    <p class="section-subtitle">
+        Try this quick Web Technology quiz.
+    </p>
+
+
+    <div class="quiz">
+
+        <!-- Question 1 -->
+
+        <div class="question">
+
+            <h3>
+                1. What does WWW stand for?
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q1" value="a">
+                World Wide Web
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="b">
+                Web World Wide
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="c">
+                World Web Window
+            </label>
+
+        </div>
+
+
+        <!-- Question 2 -->
+
+        <div class="question">
+
+            <h3>
+                2. Which language is used to structure web pages?
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q2" value="a">
+                Python
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="b">
+                HTML
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="c">
+                SQL
+            </label>
+
+        </div>
+
+
+        <!-- Question 3 -->
+
+        <div class="question">
+
+            <h3>
+                3. Which tag creates the largest standard heading?
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q3" value="a">
+                &lt;h6&gt;
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="b">
+                &lt;head&gt;
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="c">
+                &lt;h1&gt;
+            </label>
+
+        </div>
+
+
+        <!-- Question 4 -->
+
+        <div class="question">
+
+            <h3>
+                4. Which protocol is associated with web communication?
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q4" value="a">
+                HTTP
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="b">
+                HTML
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="c">
+                JPG
+            </label>
+
+        </div>
+
+
+        <!-- Question 5 -->
+
+        <div class="question">
+
+            <h3>
+                5. Which tag is used to create a hyperlink?
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q5" value="a">
+                &lt;img&gt;
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="b">
+                &lt;a&gt;
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="c">
+                &lt;linktext&gt;
+            </label>
+
+        </div>
+
+
+        <button onclick="checkQuiz()">
+            Submit Quiz
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <p>
+        Designed for <span>Web Technology</span> Learning
+    </p>
+
+    <p>
+        ITM SLS Baroda University • B.Tech CSE
+    </p>
+
+</footer>
+
+
+<!-- ==============================
+     JAVASCRIPT
+================================ -->
+
+<script>
+
+    /* =========================
+       SEARCH FUNCTION
+    ========================= */
+
+    const searchInput = document.getElementById("search");
+    const cards = document.querySelectorAll(".topic-card");
+
+    searchInput.addEventListener("input", function () {
+
+        const searchText = this.value.toLowerCase();
+
+        cards.forEach(function(card) {
+
+            const content = card.innerText.toLowerCase();
+
+            if (content.includes(searchText)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       QUIZ FUNCTION
+    ========================= */
+
+    function checkQuiz() {
+
+        let score = 0;
+
+        const answers = {
+            q1: "a",
+            q2: "b",
+            q3: "c",
+            q4: "a",
+            q5: "b"
+        };
+
+        for (let question in answers) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+            if (selected && selected.value === answers[question]) {
+                score++;
+            }
+        }
+
+        const result = document.getElementById("result");
+
+        result.innerHTML =
+            "Your Score: " + score + " / 5";
+
+        if (score === 5) {
+            result.innerHTML +=
+                "<br>Excellent! 🔥";
+        }
+        else if (score >= 3) {
+            result.innerHTML +=
+                "<br>Good job! Keep learning.";
+        }
+        else {
+            result.innerHTML +=
+                "<br>Revise the topics and try again.";
+        }
+    }
+
+</script>
+
+</body>
+</html>

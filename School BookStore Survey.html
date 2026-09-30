@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bookstore Survey | Reader's Choice</title>
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #553c9a 0%,
+                    #171329 35%,
+                    #080914 75%
+                );
+
+            color: #ffffff;
+
+            min-height: 100vh;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           BACKGROUND EFFECT
+        ========================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            background: #e8b86a;
+
+            border-radius: 50%;
+
+            filter: blur(180px);
+
+            opacity: 0.12;
+
+            top: 10%;
+            right: -150px;
+
+            z-index: -1;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            padding: 18px 8%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background:
+                rgba(8, 9, 20, 0.78);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+
+        .logo span {
+
+            color: #e8b86a;
+        }
+
+
+        nav a {
+
+            color: #ddd;
+
+            text-decoration: none;
+
+            margin-left: 25px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+
+            color: #e8b86a;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            min-height: 430px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+
+        .hero-content {
+
+            max-width: 850px;
+        }
+
+
+        .book-icon {
+
+            font-size: 70px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(45px, 8vw, 80px);
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #e8b86a,
+                    #ffffff
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero p {
+
+            color: #b9b9c8;
+
+            font-size: 18px;
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        .hero-tag {
+
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(232,184,106,0.1);
+
+            border:
+                1px solid
+                rgba(232,184,106,0.3);
+
+            color: #e8b86a;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 40px 20px 90px;
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .survey-card {
+
+            background:
+                rgba(255,255,255,0.055);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            border-radius: 28px;
+
+            padding: 45px;
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+
+            margin-bottom: 30px;
+
+            padding-bottom: 15px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.1);
+        }
+
+
+        .section-title h2 {
+
+            font-size: 28px;
+
+            color: #ffffff;
+        }
+
+
+        .section-title h2 span {
+
+            color: #e8b86a;
+        }
+
+
+        .section-title p {
+
+            color: #9292a4;
+
+            margin-top: 5px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CONTACT GRID
+        ========================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .input-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        label {
+
+            color: #d8d8df;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            background:
+                rgba(0,0,0,0.2);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+
+            border-color: #e8b86a;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(232,184,106,0.08);
+        }
+
+
+        textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+
+        select option {
+
+            background: #171329;
+
+            color: white;
+        }
+
+
+        /* =========================
+           SURVEY QUESTIONS
+        ========================= */
+
+        .question {
+
+            margin-top: 45px;
+        }
+
+
+        .question h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 18px;
+
+            color: white;
+        }
+
+
+        .question-number {
+
+            color: #e8b86a;
+        }
+
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .option {
+
+            position: relative;
+        }
+
+
+        .option input {
+
+            position: absolute;
+
+            opacity: 0;
+        }
+
+
+        .option label {
+
+            display: block;
+
+            padding: 14px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            font-weight: normal;
+        }
+
+
+        .option label:hover {
+
+            border-color: #e8b86a;
+
+            transform: translateY(-2px);
+        }
+
+
+        .option input:checked + label {
+
+            background:
+                rgba(232,184,106,0.13);
+
+            border-color: #e8b86a;
+
+            color: #e8b86a;
+
+            box-shadow:
+                0 8px 25px
+                rgba(232,184,106,0.08);
+        }
+
+
+        /* =========================
+           EXTRA QUESTIONS
+        ========================= */
+
+        .extra-section {
+
+            margin-top: 45px;
+
+            padding-top: 35px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.1);
+        }
+
+
+        /* =========================
+           SUBMIT
+        ========================= */
+
+        .submit-area {
+
+            text-align: center;
+
+            margin-top: 50px;
+        }
+
+
+        .submit-btn {
+
+            border: none;
+
+            padding: 16px 45px;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8b86a,
+                    #c98d37
+                );
+
+            color: #171329;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 12px 35px
+                rgba(232,184,106,0.2);
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.02);
+
+            box-shadow:
+                0 18px 45px
+                rgba(232,184,106,0.3);
+        }
+
+
+        .privacy {
+
+            margin-top: 15px;
+
+            color: #777789;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            color: #777789;
+
+            font-size: 13px;
+        }
+
+
+        footer span {
+
+            color: #e8b86a;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                padding: 18px 20px;
+            }
+
+
+            nav div:last-child {
+
+                display: none;
+            }
+
+
+            .survey-card {
+
+                padding: 25px 20px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .input-group.full {
+
+                grid-column: auto;
+            }
+
+
+            .options {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .hero {
+
+                padding: 65px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            BOOK<span>SPACE</span>
+        </div>
+
+        <div>
+
+            <a href="#survey">
+                Survey
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="about">
+
+        <div class="hero-content">
+
+            <div class="book-icon">
+                📚
+            </div>
+
+            <div class="hero-tag">
+                READER'S VOICE • BOOKSTORE SURVEY
+            </div>
+
+            <h1>
+                Your Story.<br>
+                Your Choice.
+            </h1>
+
+            <p>
+
+                A great bookstore begins by understanding
+                its readers. Tell us about your reading habits,
+                shopping preferences and what you would love
+                to see in your ideal bookstore.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SURVEY
+    ========================= -->
+
+    <main class="container" id="survey">
+
+        <form class="survey-card">
+
+
+            <!-- CONTACT DETAILS -->
+
+            <div class="section-title">
+
+                <h2>
+                    Reader <span>Information</span>
+                </h2>
+
+                <p>
+                    Tell us a little about yourself.
+                </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="input-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="phone">
+                        Contact Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+91 XXXXX XXXXX">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email ID
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="city">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="Enter your city">
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        name="address"
+                        placeholder="Enter your complete address"></textarea>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="pincode">
+                        Pincode
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pincode"
+                        name="pincode"
+                        placeholder="Enter pincode">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK BUYING SURVEY -->
+
+            <div class="section-title"
+                 style="margin-top: 60px;">
+
+                <h2>
+                    Book Buying <span>Survey</span>
+                </h2>
+
+                <p>
+                    Help us understand what readers really want.
+                </p>
+
+            </div>
+
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="question">
+
+                <h3>
+                    <span class="question-number">
+                        01.
+                    </span>
+
+                    From where do you buy books?
+                </h3>
+
+
+                <div class="options">
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="online"
+                            name="buy_place"
+                            value="Online Book Store">
+
+                        <label for="online">
+                            🌐 Online Book Store
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="nearby"
+                            name="buy_place"
+                            value="Nearby Book Store">
+
+                        <label for="nearby">
+                            🏪 Nearby Book Store
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="library"
+                            name="buy_place"
+                            value="School Library">
+
+                        <label for="library">
+                            📚 School Library
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="stationery"
+                            name="buy_place"
+                            value="Stationery Store">
+
+                        <label for="stationery">
+                            ✏️ Stationery Store
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="fair"
+                            name="buy_place"
+                            value="Book Fair">
+
+                        <label for="fair">
+                            🎪 Book Fair
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="question">
+
+                <h3>
+
+                    <span class="question-number">
+                        02.
+                    </span>
+
+                    What type of books do you buy?
+
+                </h3>
+
+
+                <div class="options">
+
+
+                    <div class="option">
+
+                        <input
+                            type="checkbox"
+                            id="new"
+                            name="book_type"
+                            value="New Releases">
+
+                        <label for="new">
+                            ✨ New Releases
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="checkbox"
+                            id="novels"
+                            name="book_type"
+                            value="Novels">
+
+                        <label for="novels">
+                            📖 Novels
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="checkbox"
+                            id="comics"
+                            name="book_type"
+                            value="Comics">
+
+                        <label for="comics">
+                            🦸 Comics
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="checkbox"
+                            id="study"
+                            name="book_type"
+                            value="Study Books">
+
+                        <label for="study">
+                            🎓 Study Books
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="checkbox"
+                            id="encyclopedia"
+                            name="book_type"
+                            value="Encyclopedia">
+
+                        <label for="encyclopedia">
+                            🔬 Encyclopedia
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="question">
+
+                <h3>
+
+                    <span class="question-number">
+                        03.
+                    </span>
+
+                    What price range of books do you buy?
+
+                </h3>
+
+
+                <div class="options">
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="price1"
+                            name="price"
+                            value="200-300">
+
+                        <label for="price1">
+                            ₹200 – ₹300
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="price2"
+                            name="price"
+                            value="300-400">
+
+                        <label for="price2">
+                            ₹300 – ₹400
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="price3"
+                            name="price"
+                            value="400-500">
+
+                        <label for="price3">
+                            ₹400 – ₹500
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="price4"
+                            name="price"
+                            value="500-1000">
+
+                        <label for="price4">
+                            ₹500 – ₹1000
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="question">
+
+                <h3>
+
+                    <span class="question-number">
+                        04.
+                    </span>
+
+                    What is the most important factor
+                    when buying a book?
+
+                </h3>
+
+
+                <div class="options">
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="factor-price"
+                            name="factor"
+                            value="Price">
+
+                        <label for="factor-price">
+                            💰 Price
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="factor-quality"
+                            name="factor"
+                            value="Quality">
+
+                        <label for="factor-quality">
+                            ⭐ Quality
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="factor-availability"
+                            name="factor"
+                            value="Availability">
+
+                        <label for="factor-availability">
+                            📦 Availability
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="factor-author"
+                            name="factor"
+                            value="Author">
+
+                        <label for="factor-author">
+                            ✍️ Author
+                        </label>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <input
+                            type="radio"
+                            id="factor-reviews"
+                            name="factor"
+                            value="Reviews">
+
+                        <label for="factor-reviews">
+                            ⭐ Reviews
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EXTRA QUESTIONS I ADDED -->
+
+            <div class="extra-section">
+
+                <div class="section-title">
+
+                    <h2>
+                        Reader <span>Preferences</span>
+                    </h2>
+
+                    <p>
+                        A few extra questions to make our survey more useful.
+                    </p>
+
+                </div>
+
+
+
+                <!-- READING FREQUENCY -->
+
+                <div class="question">
+
+                    <h3>
+
+                        <span class="question-number">
+                            05.
+                        </span>
+
+                        How often do you buy books?
+
+                    </h3>
+
+
+                    <div class="options">
+
+
+                        <div class="option">
+
+                            <input
+                                type="radio"
+                                id="weekly"
+                                name="frequency"
+                                value="Weekly">
+
+                            <label for="weekly">
+                                📅 Weekly
+                            </label>
+
+                        </div>
+
+
+                        <div class="option">
+
+                            <input
+                                type="radio"
+                                id="monthly"
+                                name="frequency"
+                                value="Monthly">
+
+                            <label for="monthly">
+                                📅 Monthly
+                            </label>
+
+                        </div>
+
+
+                        <div class="option">
+
+                            <input
+                                type="radio"
+                                id="occasionally"
+                                name="frequency"
+                                value="Occasionally">
+
+                            <label for="occasionally">
+                                📆 Occasionally
+                            </label>
+
+                        </div>
+
+
+                        <div class="option">
+
+                            <input
+                                type="radio"
+                                id="rarely"
+                                name="frequency"
+                                value="Rarely">
+
+                            <label for="rarely">
+                                📚 Rarely
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAVOURITE GENRE -->
+
+                <div class="question">
+
+                    <h3>
+
+                        <span class="question-number">
+                            06.
+                        </span>
+
+                        What is your favourite book genre?
+
+                    </h3>
+
+
+                    <div class="input-group">
+
+                        <select name="genre">
+
+                            <option value="">
+                                Select your favourite genre
+                            </option>
+
+                            <option>
+                                Fiction
+                            </option>
+
+                            <option>
+                                Mystery & Thriller
+                            </option>
+
+                            <option>
+                                Romance
+                            </option>
+
+                            <option>
+                                Science Fiction
+                            </option>
+
+                            <option>
+                                Biography
+                            </option>
+
+                            <option>
+                                Self-Help
+                            </option>
+
+                            <option>
+                                Academic
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMMENTS -->
+
+                <div class="question">
+
+                    <h3>
+
+                        <span class="question-number">
+                            07.
+                        </span>
+
+                        What would you like to see in your
+                        ideal bookstore?
+
+                    </h3>
+
+
+                    <textarea
+                        name="comments"
+                        placeholder="Share your ideas, suggestions or expectations..."></textarea>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SUBMIT -->
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Submit My Survey →
+                    
+                </button>
+
+
+                <p class="privacy">
+
+                    Thank you for helping us understand
+                    readers better. 📚
+
+                </p>
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>BookSpace</span> |
+            Reader's Choice Bookstore Survey
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

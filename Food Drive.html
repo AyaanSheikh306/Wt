@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Drive | Ayaan Sheikh</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f3eb;
+            color: #172b4d;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #0b1f3a;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: #ffb703;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ffb703;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 520px;
+            background:
+                linear-gradient(rgba(11, 31, 58, 0.82),
+                rgba(11, 31, 58, 0.82)),
+                linear-gradient(135deg, #0b1f3a, #173f67);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .food-icon {
+            font-size: 75px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #ffb703;
+        }
+
+        .hero p {
+            color: #f5f5f5;
+            font-size: 20px;
+            margin: 15px auto;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 30px;
+            background: #fb8500;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #ffb703;
+            color: #0b1f3a;
+            transform: translateY(-3px);
+        }
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #0b1f3a;
+        }
+
+        .section-title span {
+            color: #fb8500;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            color: #0b1f3a;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 span {
+            color: #fb8500;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        /* STATS */
+
+        .stats {
+            background: #0b1f3a;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 25px;
+            color: white;
+        }
+
+        .stat .number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffb703;
+        }
+
+        .stat p {
+            font-size: 17px;
+        }
+
+        /* EXPERIENCE */
+
+        .experience {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .experience-card {
+            background: white;
+            margin-bottom: 20px;
+            padding: 25px 30px;
+            border-left: 6px solid #fb8500;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .experience-card h3 {
+            margin-bottom: 8px;
+            color: #0b1f3a;
+        }
+
+        /* LESSON */
+
+        .lesson {
+            background: linear-gradient(135deg, #fff3d6, #ffe6b3);
+            text-align: center;
+        }
+
+        .lesson-box {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .lesson-box p {
+            font-size: 20px;
+            color: #39495e;
+        }
+
+        /* QUOTE */
+
+        .quote {
+            background: #fb8500;
+            text-align: center;
+            color: white;
+        }
+
+        .quote h2 {
+            font-size: 30px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .quote p {
+            margin-top: 15px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            color: #0b1f3a;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #071629;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer span {
+            color: #ffb703;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 6%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">🍲 FOOD DRIVE</div>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#lesson">Lesson</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="food-icon">🍲❤️</div>
+
+            <h1>FOOD <span>DRIVE</span></h1>
+
+            <p>
+                Spreading kindness, sharing food,
+                and making a difference in our community.
+            </p>
+
+            <p>
+                📍 Vadodara &nbsp; | &nbsp; 👤 Ayaan Sheikh
+            </p>
+
+            <a href="#about" class="hero-button">
+                Explore My Experience ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <h2>About the <span>Food Drive</span></h2>
+
+            <p>
+                An experience of kindness, teamwork and community service.
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+            <div class="card">
+
+                <h3>🍱 What is a <span>Food Drive?</span></h3>
+
+                <p>
+                    A food drive is an organized community effort to
+                    collect packaged and non-perishable food items
+                    to support people in need.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🤝 My <span>Contribution</span></h3>
+
+                <p>
+                    I volunteered at a food drive in Vadodara.
+                    My friends and I contributed and collected
+                    money and food items to help people who were
+                    in need.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <div class="number">400+</div>
+
+            <p>People Fed</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="number">🤝</div>
+
+            <p>Teamwork</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="number">❤️</div>
+
+            <p>Kindness Shared</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+
+        <div class="section-title">
+
+            <h2>My <span>Experience</span></h2>
+
+            <p>
+                A memorable experience that taught me valuable lessons.
+            </p>
+
+        </div>
+
+
+        <div class="experience">
+
+            <div class="experience-card">
+
+                <h3>📍 Reaching People in Need</h3>
+
+                <p>
+                    We reached many places where there was a need for food.
+                    We fed more than 400 people and experienced the joy
+                    of helping others.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card">
+
+                <h3>😊 Seeing Their Smiles</h3>
+
+                <p>
+                    Seeing smiles on people's faces made us more excited
+                    to continue helping them and reminded us of the value
+                    of kindness.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card">
+
+                <h3>🤝 Working as a Team</h3>
+
+                <p>
+                    We worked together as a team and successfully
+                    distributed food to many families.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card">
+
+                <h3>🌍 Making a Difference</h3>
+
+                <p>
+                    This experience showed me that even a small contribution
+                    can make a big difference in someone's life.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LESSON SECTION -->
+
+    <section id="lesson" class="lesson">
+
+        <div class="section-title">
+
+            <h2>What I <span>Learned</span></h2>
+
+        </div>
+
+        <div class="lesson-box">
+
+            <p>
+                This experience taught me the importance of kindness,
+                teamwork and helping others. I realized that everyone
+                can contribute in some way to help people who are less
+                fortunate.
+            </p>
+
+            <br>
+
+            <p>
+                This experience will always remain a memorable and
+                valuable lesson in my life.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+        <h2>
+            "Even a small contribution can make a big difference
+            in someone's life." ❤️
+        </h2>
+
+        <p>
+            — Ayaan Sheikh
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="section-title">
+
+            <h2>Volunteer <span>Details</span></h2>
+
+        </div>
+
+
+        <div class="contact">
+
+            <div class="contact-card">
+
+                <div class="icon">👤</div>
+
+                <h3>Ayaan Sheikh</h3>
+
+                <p>Volunteer</p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">📍</div>
+
+                <h3>Vadodara</h3>
+
+                <p>City</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Ayaan Sheikh</span> |
+            Food Drive Community Service
+        </p>
+
+        <p>
+            Made with ❤️ for a better community.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

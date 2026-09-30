@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ayaan Sheikh | Portfolio</title>
+
+    <style>
+
+        /* =========================
+           BASIC SETTINGS
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070b17;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #6c5ce7;
+            filter: blur(180px);
+            opacity: 0.18;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #00d4ff;
+            filter: blur(180px);
+            opacity: 0.12;
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(7, 11, 23, 0.75);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 120px 8% 70px;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .small-title {
+            color: #00d4ff;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 95px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #00d4ff;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: #aab3c5;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #00d4ff;
+            color: #07101d;
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+        }
+
+        .secondary {
+            border: 1px solid #344158;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-card {
+            position: relative;
+
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.10),
+                rgba(255,255,255,0.03)
+            );
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            border-radius: 30px;
+            padding: 45px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.35);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+
+            margin: auto;
+            margin-bottom: 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 60px;
+
+            background:
+                linear-gradient(135deg,#00d4ff,#6c5ce7);
+
+            box-shadow:
+                0 0 50px rgba(0,212,255,0.3);
+        }
+
+        .profile-card h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .profile-card p {
+            color: #aab3c5;
+        }
+
+        .profile-info {
+            margin-top: 25px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .profile-info div {
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-heading {
+            max-width: 1100px;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+
+        .section-heading small {
+            color: #00d4ff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .glass-card {
+            padding: 35px;
+
+            background: rgba(255,255,255,0.045);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0,212,255,0.4);
+        }
+
+        .glass-card h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .glass-card p {
+            color: #aab3c5;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 35px 20px;
+            text-align: center;
+
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+            background: rgba(0,212,255,0.08);
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill p {
+            color: #8994a8;
+            font-size: 14px;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================= */
+
+        .education {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .education-card {
+            padding: 35px;
+
+            border-left: 3px solid #00d4ff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,212,255,0.08),
+                    rgba(255,255,255,0.02)
+                );
+
+            border-radius: 0 20px 20px 0;
+
+            margin-bottom: 20px;
+        }
+
+        .education-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #aab3c5;
+        }
+
+        /* =========================
+           PROJECT
+        ========================= */
+
+        .project {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 45px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(108,92,231,0.15),
+                    rgba(0,212,255,0.08)
+                );
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .project h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .project h3 span {
+            color: #00d4ff;
+        }
+
+        .project p {
+            color: #aab3c5;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .tag {
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            background: rgba(0,212,255,0.1);
+            color: #00d4ff;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            max-width: 850px;
+            margin: auto;
+
+            text-align: center;
+
+            padding: 60px 30px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,212,255,0.10),
+                    rgba(108,92,231,0.12)
+                );
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #aab3c5;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px;
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #8994a8;
+        }
+
+        footer span {
+            color: #00d4ff;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 850px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .section-heading h2 {
+                font-size: 35px;
+            }
+
+            .project {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Ayaan<span>.</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#education">Education</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-container">
+
+            <div>
+
+                <div class="small-title">
+                    Hello, I'm
+                </div>
+
+                <h1>
+                    Ayaan<br>
+                    <span>Sheikh.</span>
+                </h1>
+
+                <p class="hero-description">
+
+                    18-year-old CSE student passionate about
+                    HTML, Web Development and JavaScript.
+                    I'm learning to turn ideas into beautiful
+                    and useful digital experiences.
+
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="btn primary">
+                        View My Work
+                    </a>
+
+                    <a href="#contact" class="btn secondary">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div class="profile-circle">
+                    👨🏻‍💻
+                </div>
+
+                <h2>
+                    Ayaan Sheikh
+                </h2>
+
+                <p>
+                    Aspiring Web Developer
+                </p>
+
+                <div class="profile-info">
+
+                    <div>
+                        🎂 Age: <strong>18</strong>
+                    </div>
+
+                    <div>
+                        🎓 CBSE Board Graduate
+                    </div>
+
+                    <div>
+                        💻 B.Tech CSE Student
+                    </div>
+
+                    <div>
+                        📍 Vadodara, Gujarat
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about">
+
+        <div class="section-heading">
+
+            <small>01 — About Me</small>
+
+            <h2>
+                A little about <span style="color:#00d4ff;">
+                    me.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-container">
+
+            <div class="glass-card">
+
+                <h3>
+                    👋 Who I Am
+                </h3>
+
+                <p>
+
+                    My name is Ayaan Sheikh and I am 18 years old.
+                    I have completed my schooling under the CBSE Board.
+                    I am currently pursuing B.Tech in Computer Science
+                    Engineering.
+
+                </p>
+
+            </div>
+
+
+            <div class="glass-card">
+
+                <h3>
+                    🚀 What I'm Learning
+                </h3>
+
+                <p>
+
+                    I am currently learning HTML, Web Development
+                    and JavaScript. My goal is to continuously improve
+                    my coding skills and build creative, practical
+                    websites.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section id="skills">
+
+        <div class="section-heading">
+
+            <small>02 — Skills</small>
+
+            <h2>
+                What I'm <span style="color:#00d4ff;">
+                    learning.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="skills">
+
+            <div class="skill">
+
+                <div class="skill-icon">
+                    🌐
+                </div>
+
+                <h3>HTML</h3>
+
+                <p>
+                    Learning to create structured web pages.
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-icon">
+                    🎨
+                </div>
+
+                <h3>Web Design</h3>
+
+                <p>
+                    Exploring modern and responsive designs.
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-icon">
+                    ⚡
+                </div>
+
+                <h3>JavaScript</h3>
+
+                <p>
+                    Learning interactive web development.
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-icon">
+                    💻
+                </div>
+
+                <h3>Programming</h3>
+
+                <p>
+                    Building my foundation in computer science.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================= -->
+
+    <section id="education">
+
+        <div class="section-heading">
+
+            <small>03 — Education</small>
+
+            <h2>
+                My <span style="color:#00d4ff;">
+                    education.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="education">
+
+            <div class="education-card">
+
+                <h3>
+                    🎓 CBSE Board
+                </h3>
+
+                <p>
+                    Successfully completed schooling under
+                    the Central Board of Secondary Education.
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>
+                    💻 B.Tech — Computer Science Engineering
+                </h3>
+
+                <p>
+                    Currently pursuing my B.Tech in Computer
+                    Science Engineering and developing my
+                    programming and web development skills.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================= -->
+
+    <section id="projects">
+
+        <div class="section-heading">
+
+            <small>04 — Projects</small>
+
+            <h2>
+                Things I'm <span style="color:#00d4ff;">
+                    building.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                ✈️ <span>Easy Travel</span>
+            </h3>
+
+            <p>
+
+                A travel booking website concept that brings
+                flight tickets, train tickets, bus tickets and
+                hotel bookings together in one platform.
+
+                This project is helping me practice HTML,
+                CSS, JavaScript and real-world web development.
+
+            </p>
+
+
+            <div class="tags">
+
+                <div class="tag">HTML</div>
+
+                <div class="tag">CSS</div>
+
+                <div class="tag">JavaScript</div>
+
+                <div class="tag">Web Development</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="contact">
+
+        <div class="contact-box">
+
+            <h2>
+                Let's build something
+                <span style="color:#00d4ff;">
+                    amazing.
+                </span>
+            </h2>
+
+            <p>
+
+                I'm always interested in learning,
+                creating and exploring new ideas.
+
+            </p>
+
+            <a href="mailto:ayaan@example.com"
+               class="btn primary">
+
+                Say Hello →
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Ayaan Sheikh</span>.
+            Designed & Built with HTML.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
