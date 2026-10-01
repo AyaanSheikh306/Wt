@@ -11,16 +11,37 @@
            PREMIUM COLOR SYSTEM
         ============================== */
         :root {
-            --bg: #070b14;
-            --bg2: #0d1322;
-            --card: rgba(18, 25, 42, 0.78);
-            --text: #f5f7ff;
-            --muted: #9da8bd;
-            --cyan: #43e7ff;
-            --lime: #b8ff4d;
-            --pink: #ff5caa;
-            --border: rgba(255,255,255,0.10);
-            --shadow: 0 20px 60px rgba(0,0,0,0.35);
+            color-scheme: light;
+            --bg: #f5f7f4;
+            --bg2: #eaf0eb;
+            --card: #ffffff;
+            --text: #17251f;
+            --muted: #65756d;
+            --cyan: #16785b;
+            --lime: #a5d86e;
+            --pink: #d77a4e;
+            --border: rgba(23, 37, 31, 0.12);
+            --shadow: 0 18px 45px rgba(29, 54, 42, 0.08);
+            --nav-bg: rgba(245, 247, 244, 0.9);
+            --input-bg: #ffffff;
+            --code-bg: #12231c;
+        }
+
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #101a16;
+            --bg2: #18251f;
+            --card: #1a2922;
+            --text: #eff7f1;
+            --muted: #a1b3a8;
+            --cyan: #70d9ad;
+            --lime: #c4e78f;
+            --pink: #f0a27c;
+            --border: rgba(233, 248, 237, 0.12);
+            --shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+            --nav-bg: rgba(16, 26, 22, 0.9);
+            --input-bg: #15221c;
+            --code-bg: #0b130f;
         }
 
         * {
@@ -33,11 +54,12 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at 10% 10%, rgba(67,231,255,0.10), transparent 30%),
-                radial-gradient(circle at 90% 20%, rgba(255,92,170,0.08), transparent 30%),
+                radial-gradient(circle at 10% 5%, rgba(22,120,91,0.09), transparent 28%),
+                radial-gradient(circle at 92% 16%, rgba(215,122,78,0.08), transparent 26%),
                 var(--bg);
             color: var(--text);
             line-height: 1.7;
+            transition: background-color 0.25s, color 0.25s;
         }
 
         /* ==============================
@@ -49,7 +71,7 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(18px);
-            background: rgba(7,11,20,0.82);
+            background: var(--nav-bg);
             border-bottom: 1px solid var(--border);
         }
 
@@ -93,7 +115,7 @@
         ============================== */
 
         .hero {
-            min-height: 90vh;
+            min-height: 78vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -108,10 +130,10 @@
         .badge {
             display: inline-block;
             padding: 7px 15px;
-            border: 1px solid rgba(67,231,255,0.3);
+            border: 1px solid color-mix(in srgb, var(--cyan) 32%, transparent);
             border-radius: 30px;
             color: var(--cyan);
-            background: rgba(67,231,255,0.06);
+            background: color-mix(in srgb, var(--cyan) 8%, transparent);
             margin-bottom: 25px;
         }
 
@@ -129,6 +151,7 @@
                 var(--pink)
             );
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -157,7 +180,7 @@
 
         .btn-primary {
             background: var(--cyan);
-            color: #061018;
+            color: #fff;
         }
 
         .btn-secondary {
@@ -203,8 +226,8 @@
             padding: 17px 20px;
             border-radius: 14px;
             border: 1px solid var(--border);
-            background: rgba(255,255,255,0.05);
-            color: white;
+            background: var(--input-bg);
+            color: var(--text);
             font-size: 16px;
             outline: none;
         }
@@ -300,7 +323,7 @@
 
         .code-box,
         .preview-box {
-            background: #050811;
+            background: var(--code-bg);
             border: 1px solid var(--border);
             border-radius: 18px;
             overflow: hidden;
@@ -396,6 +419,120 @@
         }
 
         /* ==============================
+           INTERACTIVE POLISH
+        ============================== */
+
+        html { scroll-padding-top: 86px; }
+
+        nav { box-shadow: 0 8px 24px rgba(23, 37, 31, 0.04); }
+
+        .logo { color: var(--text); }
+        .btn-secondary { color: var(--text); }
+        .hero-note { margin-top: 26px; color: var(--muted); font-size: 14px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+        .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+        .icon-button {
+            min-width: 42px;
+            min-height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card);
+            color: var(--text);
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .icon-button:hover { transform: translateY(-2px); border-color: var(--cyan); }
+        .menu-toggle { display: none; }
+
+        .reading-progress {
+            position: absolute;
+            inset: auto auto -1px 0;
+            height: 3px;
+            width: 0;
+            background: var(--cyan);
+            transition: width 0.1s linear;
+        }
+
+        .hero-content { animation: rise-in 0.7s ease both; }
+
+        .hero h1 { letter-spacing: -0.055em; }
+
+        .gradient {
+            background: linear-gradient(110deg, var(--cyan), #70a85e, var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .section-title { letter-spacing: -0.035em; }
+
+        .topic-card, .flow-item, .question {
+            color: var(--text);
+            background: var(--card);
+            box-shadow: var(--shadow);
+        }
+
+        .topic-card { min-height: 170px; }
+        .topic-number { color: var(--pink); }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            border-color: color-mix(in srgb, var(--cyan) 50%, transparent);
+        }
+
+        .search-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; color: var(--muted); font-size: 14px; }
+        .search-meta button { border: 0; background: none; color: var(--cyan); font: inherit; cursor: pointer; }
+        .empty-state { display: none; padding: 22px; border: 1px dashed var(--border); border-radius: 14px; color: var(--muted); text-align: center; }
+
+        .flow-item { transition: transform 0.2s, border-color 0.2s; }
+        .flow-item:hover { transform: translateY(-4px); border-color: var(--cyan); }
+
+        .editor-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+        .editor-actions { display: flex; gap: 8px; }
+        .editor-actions button { padding: 7px 11px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: var(--text); cursor: pointer; }
+        .editor-actions button:hover { border-color: var(--cyan); }
+        #html-editor { display: block; width: 100%; min-height: 350px; resize: vertical; padding: 20px; border: 0; outline: 0; background: var(--code-bg); color: #d8f1df; font: 14px/1.65 Consolas, Monaco, monospace; tab-size: 2; }
+        #live-preview { display: block; width: 100%; min-height: 350px; border: 0; background: #fff; }
+
+        .option { color: var(--text); transition: background 0.2s; }
+        .option input { accent-color: var(--cyan); margin-right: 8px; }
+        .quiz button { background: var(--cyan); color: #fff; transition: transform 0.2s; }
+        .quiz button:hover { transform: translateY(-2px); }
+        #result { padding: 12px 0; color: var(--cyan); }
+
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 900;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: var(--cyan);
+            color: white;
+            font-size: 20px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+        :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+
+        @keyframes rise-in {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==============================
            RESPONSIVE
         ============================== */
 
@@ -416,6 +553,22 @@
             .nav-links {
                 display: none;
             }
+
+            .menu-toggle { display: inline-grid; place-items: center; }
+            .nav-links.open {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 0;
+                right: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 24px 18px;
+                background: var(--nav-bg);
+                border-bottom: 1px solid var(--border);
+                backdrop-filter: blur(18px);
+            }
+            .nav-links.open a { display: block; padding: 9px 0; }
         }
 
         @media (max-width: 550px) {
@@ -435,6 +588,12 @@
             .section-title {
                 font-size: 32px;
             }
+
+            .nav-container { padding: 12px 16px; }
+            .section { padding: 62px 18px; }
+            .hero { min-height: 72vh; }
+            .search-meta { font-size: 12px; }
+            #html-editor, #live-preview { min-height: 300px; }
         }
     </style>
 </head>
@@ -446,19 +605,25 @@
 ================================ -->
 
 <nav>
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
     <div class="nav-container">
 
         <div class="logo">
             Web<span>Craft</span>
         </div>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#unit1">Unit 01</a></li>
             <li><a href="#unit2">Unit 02</a></li>
             <li><a href="#lab">Lab</a></li>
             <li><a href="#quiz">Quiz</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle theme">☾</button>
+            <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+        </div>
 
     </div>
 </nav>
@@ -497,6 +662,8 @@
             </a>
         </div>
 
+        <p class="hero-note">A clear, hands-on guide from your first request to your first web page.</p>
+
     </div>
 
 </section>
@@ -520,9 +687,15 @@
         <input
             type="text"
             id="search"
+            aria-label="Search syllabus topics"
             placeholder="Search: HTML, HTTP, URL, WWW..."
         >
+        <div class="search-meta">
+            <span id="search-count" aria-live="polite">34 topics</span>
+            <button id="clear-search" type="button">Clear search</button>
+        </div>
     </div>
+    <div class="empty-state" id="empty-state">No matching topics. Try a broader search such as “HTML” or “HTTP”.</div>
 
 </section>
 
@@ -919,39 +1092,30 @@
 
     <div class="lab">
 
-        <div class="code-box">
-
-            <div class="box-title">
-                HTML CODE
-            </div>
-
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;My First Web Page&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-
-    &lt;h1&gt;Welcome to Web Technology&lt;/h1&gt;
-
-    &lt;p&gt;
-        I am learning HTML.
-    &lt;/p&gt;
-
-    &lt;a href="https://example.com"&gt;
-        Visit Website
-    &lt;/a&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;
-</pre>
-
-        </div>
+                <div class="code-box">
+                    <div class="box-title">LIVE HTML EDITOR</div>
+                    <div class="editor-toolbar">
+                        <span>Changes update in the preview automatically</span>
+                        <div class="editor-actions">
+                            <button id="copy-code" type="button">Copy</button>
+                            <button id="reset-code" type="button">Reset</button>
+                        </div>
+                    </div>
+                    <label for="html-editor" class="sr-only">Edit the sample HTML</label>
+                    <textarea id="html-editor" spellcheck="false"><!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>My First Web Page</title>
+        </head>
+        <body>
+          <h1>Welcome to Web Technology</h1>
+          <p>I am learning HTML. Edit this text and watch the preview change.</p>
+          <a href="https://example.com">Visit a sample website</a>
+        </body>
+        </html></textarea>
+                </div>
 
 
         <div class="preview-box">
@@ -960,21 +1124,7 @@
                 BROWSER PREVIEW
             </div>
 
-            <div class="preview-content">
-
-                <h1>
-                    Welcome to Web Technology
-                </h1>
-
-                <p>
-                    I am learning HTML.
-                </p>
-
-                <a href="#">
-                    Visit Website
-                </a>
-
-            </div>
+            <iframe id="live-preview" title="Live preview of your HTML" sandbox=""></iframe>
 
         </div>
 
@@ -1157,85 +1307,117 @@
 
 </footer>
 
+<button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
+
 
 <!-- ==============================
      JAVASCRIPT
 ================================ -->
 
 <script>
-
-    /* =========================
-       SEARCH FUNCTION
-    ========================= */
-
     const searchInput = document.getElementById("search");
-    const cards = document.querySelectorAll(".topic-card");
+    const cards = [...document.querySelectorAll(".topic-card")];
+    const searchCount = document.getElementById("search-count");
+    const emptyState = document.getElementById("empty-state");
 
-    searchInput.addEventListener("input", function () {
-
-        const searchText = this.value.toLowerCase();
-
-        cards.forEach(function(card) {
-
-            const content = card.innerText.toLowerCase();
-
-            if (content.includes(searchText)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-
+    function filterTopics() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+        cards.forEach((card) => {
+            const matches = card.textContent.toLowerCase().includes(query);
+            card.hidden = !matches;
+            if (matches) visibleCount++;
         });
+        searchCount.textContent = `${visibleCount} ${visibleCount === 1 ? "topic" : "topics"}`;
+        emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    }
 
+    searchInput.addEventListener("input", filterTopics);
+    document.getElementById("clear-search").addEventListener("click", () => {
+        searchInput.value = "";
+        filterTopics();
+        searchInput.focus();
     });
 
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("webcraft-theme");
+    if (savedTheme === "dark") document.documentElement.dataset.theme = "dark";
+    function syncThemeButton() {
+        const isDark = document.documentElement.dataset.theme === "dark";
+        themeToggle.textContent = isDark ? "☀" : "☾";
+        themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} theme`);
+    }
+    syncThemeButton();
+    themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.dataset.theme !== "dark";
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        if (!isDark) delete document.documentElement.dataset.theme;
+        localStorage.setItem("webcraft-theme", isDark ? "dark" : "light");
+        syncThemeButton();
+    });
 
-    /* =========================
-       QUIZ FUNCTION
-    ========================= */
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    });
+    navLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+            navLinks.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    const editor = document.getElementById("html-editor");
+    const preview = document.getElementById("live-preview");
+    const starterCode = editor.value;
+    function updatePreview() { preview.srcdoc = editor.value; }
+    editor.addEventListener("input", updatePreview);
+    updatePreview();
+    document.getElementById("reset-code").addEventListener("click", () => {
+        editor.value = starterCode;
+        updatePreview();
+        editor.focus();
+    });
+    document.getElementById("copy-code").addEventListener("click", async (event) => {
+        const button = event.currentTarget;
+        try {
+            await navigator.clipboard.writeText(editor.value);
+        } catch {
+            editor.select();
+            document.execCommand("copy");
+            editor.setSelectionRange(editor.value.length, editor.value.length);
+        }
+        button.textContent = "Copied!";
+        window.setTimeout(() => { button.textContent = "Copy"; }, 1400);
+    });
 
     function checkQuiz() {
-
-        let score = 0;
-
-        const answers = {
-            q1: "a",
-            q2: "b",
-            q3: "c",
-            q4: "a",
-            q5: "b"
-        };
-
-        for (let question in answers) {
-
-            const selected =
-                document.querySelector(
-                    'input[name="' + question + '"]:checked'
-                );
-
-            if (selected && selected.value === answers[question]) {
-                score++;
-            }
-        }
-
+        const answers = { q1: "a", q2: "b", q3: "c", q4: "a", q5: "b" };
+        const unanswered = Object.keys(answers).filter((name) => !document.querySelector(`input[name="${name}"]:checked`));
         const result = document.getElementById("result");
-
-        result.innerHTML =
-            "Your Score: " + score + " / 5";
-
-        if (score === 5) {
-            result.innerHTML +=
-                "<br>Excellent! 🔥";
+        if (unanswered.length) {
+            result.textContent = `Answer all ${Object.keys(answers).length} questions before submitting (${unanswered.length} left).`;
+            return;
         }
-        else if (score >= 3) {
-            result.innerHTML +=
-                "<br>Good job! Keep learning.";
-        }
-        else {
-            result.innerHTML +=
-                "<br>Revise the topics and try again.";
-        }
+        const score = Object.entries(answers).reduce((total, [name, answer]) => {
+            return total + (document.querySelector(`input[name="${name}"]:checked`).value === answer ? 1 : 0);
+        }, 0);
+        const feedback = score === 5 ? "Perfect score — excellent work!" : score >= 3 ? "Good work. Keep building on what you know." : "Review the units and give it another try.";
+        result.textContent = `Your score: ${score} / 5. ${feedback}`;
     }
+    document.querySelector(".quiz button").addEventListener("click", checkQuiz);
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+        backToTop.classList.toggle("visible", window.scrollY > 500);
+    }, { passive: true });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
 </script>
 
